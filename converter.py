@@ -10,47 +10,29 @@ MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
                     '1':'.----', '2':'..---', '3':'...--',
                     '4':'....-', '5':'.....', '6':'-....',
                     '7':'--...', '8':'---..', '9':'----.',
-                    '0':'-----', ', ':'--..--', '.':'.-.-.-',
-                    '?':'..--..', '/':'-..-.', '-':'-....-',
-                    '(':'-.--.', ')':'-.--.-', ' ': ' '}
+                    '0':'-----',}
 
-target = input('Would you like to convert to morse code or text?\n'
-               'Please type "text" or "morse": ').lower()
+# target = input('Would you like to convert to morse code or text?\n'
+#                'Please type "text" or "morse": ').lower()
 
-
-
-def convert(direction):
+def convert():
     morse_code = ''
-    converted_text = ''
-    if direction == 'morse':
-        text_to_con = input('Please type your text to convert to Morse Code: ').upper()
-        try:
-            for letter in text_to_con:
-                morse_code += MORSE_CODE_DICT[letter]
+    # converted_text = ''
+    text_to_con = input('Please type your text to convert to Morse Code: ').upper()
+    try:
+        for letter in text_to_con:
+            if letter != ' ':
+                # No space in the message indicates only one space in the Morse Code
+                #Look up the Morse code in the dictionary
+                morse_code += MORSE_CODE_DICT[letter] + ' '
+            # If there is a space in the text we need 2 spaces in the Morse
+            else:
+                morse_code += '  '
+    # Return an error message if the user inputs an invalid character
+    except KeyError:
+        print(f'{letter} is not valid.\n'
+              f'Please try again.')
 
-        except KeyError:
-            print(f'{letter} is not valid.\n'
-                    f'Please try again.')
+    print(morse_code)
 
-        else:
-            print(morse_code)
-
-    elif direction == 'text':
-        morse_to_con = input('Please input your Morse Code as a series of periods and dashes: ')
-        for symbol in morse_to_con:
-            #Convert keys and values to their respective list
-            morse_code_symbols = list(MORSE_CODE_DICT.values())
-            morse_code_keys = list(MORSE_CODE_DICT.keys())
-
-            #Find the index of the symbol
-            symbol_loc = morse_code_symbols.index(symbol)
-
-            #Use the index to match the symbol to the letter and add to the final text
-            converted_text += morse_code_keys[symbol_loc]
-        print(converted_text)
-
-    else:
-        print(f'{direction} is not a valid input.')
-        print(f'Please try again and input either "morse" or "text".')
-
-convert(direction=target)
+convert()

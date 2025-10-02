@@ -10,3 +10,6 @@
 # Bytecode cache
 __pycache__/
 *.py[cod]
+
+# Future Improvements
+development.py
