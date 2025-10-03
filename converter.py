@@ -27,7 +27,7 @@ def direction(user_choice):
         result = decrypt()
     else:
         print(f'{user_choice} is not a valid input.')
-        print(f'Please try again and input either "morse" or "text".')
+        print(f'Please try again and input either "encrypt" or "decrypt".')
         return None
 
     return result

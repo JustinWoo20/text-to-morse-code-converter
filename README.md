@@ -26,8 +26,7 @@ python converter.py
 When you run you will be prompted to enter a message to encrypt into Morse Code
 
 ## Future Improvements
-    - Decrypting Morse Code into text
-    - Adding support for punction and special characters
+    - Correct capitalization for decrypted outputs
 
 ## License
 This project is open-source and free to use under the MIT License.
