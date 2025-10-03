@@ -21,14 +21,14 @@ target = input('Would you like to encrypt to Morse Code or decrypt to Morse Code
 
 def direction(user_choice):
     # Choose whether to encrypt or decrypt
-    try:
-        if user_choice== 'encrypt':
-            result = encrypt()
-        elif user_choice == 'decrypt':
-            result = decrypt()
-    except UnboundLocalError:
-        print(f'{direction} is not a valid input.')
+    if user_choice== 'encrypt':
+        result = encrypt()
+    elif user_choice == 'decrypt':
+        result = decrypt()
+    else:
+        print(f'{user_choice} is not a valid input.')
         print(f'Please try again and input either "morse" or "text".')
+        return None
 
     return result
 
